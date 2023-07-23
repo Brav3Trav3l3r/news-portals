@@ -8,27 +8,28 @@ export default function Artices({ data }) {
   const formattedDate = dateObj.toLocaleDateString("en-US", options);
 
   return (
-    <div className="articles">
-      <div className="main flex flex-col lg:flex-row gap-8">
-        <div className="first flex flex-col gap-4 py-6">
-          <div className="img">
-            <img src={first.urlToImage} alt="" />
-          </div>
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <h1 className="text-xs opacity-60">{formattedDate}</h1>
-              <h1 className="font-bold text-2xl">{first.title}</h1>
-            </div>
-            <h1 className="opacity-75 text-md tracking-wider">
-              {first.description}
+    <div className="main flex flex-col lg:flex-row gap-4 md:gap-8">
+      <div className="first lg:flex-1 flex flex-col gap-4 pb-6">
+        <div className="img">
+          <img src={first.urlToImage} alt="" />
+        </div>
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <h1 className="text-xs opacity-60 font-semibold">
+              {formattedDate}
             </h1>
+            <h1 className="font-bold text-lg md:text-2xl">{first.title}</h1>
           </div>
+          <h1 className="opacity-90 md:text-md tracking-wider">
+            {first.description}
+          </h1>
+          <h1 className="text-xs opacity-75">- {first.source?.name}</h1>
         </div>
-        <div className="divide-y divide-neutral">
-          {data.articles.slice(1, 4).map((a) => (
-            <Card article={a} />
-          ))}
-        </div>
+      </div>
+      <div className="divide-y lg:flex-1 divide-neutral">
+        {data.articles.slice(1, 4).map((a) => (
+          <Card article={a} />
+        ))}
       </div>
     </div>
   );

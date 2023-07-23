@@ -70,7 +70,13 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <div className="form-control">
+          <input
+            type="text"
+            placeholder="Search"
+            className="input input-bordered  md:w-auto"
+          />
+        </div>
       </div>
     </div>
   );
