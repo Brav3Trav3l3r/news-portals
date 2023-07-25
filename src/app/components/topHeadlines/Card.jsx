@@ -12,7 +12,7 @@ export default function Card({ article }) {
         <h1 className="text-lg font-semibold line-clamp-4">{article.title}</h1>
         <h1 className="text-xs opacity-75">- {article.source?.name}</h1>
       </div>
-      <div className="w-2/5 aspect-video ">
+      <div className="w-2/5 aspect-video overflow-hidden">
         <img
           src={article.urlToImage}
           alt=""

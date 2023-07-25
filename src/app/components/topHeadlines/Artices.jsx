@@ -10,8 +10,12 @@ export default function Artices({ data }) {
   return (
     <div className="main flex flex-col lg:flex-row gap-4 md:gap-8">
       <div className="first lg:flex-1 flex flex-col gap-4 pb-6">
-        <div className="img">
-          <img src={first.urlToImage} alt="" />
+        <div className="overflow-hidden aspect-video">
+          <img
+            src={first.urlToImage}
+            alt=""
+            className="w-full h-full object-cover"
+          />
         </div>
         <div className="space-y-4">
           <div className="space-y-2">
