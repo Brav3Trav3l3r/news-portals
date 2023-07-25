@@ -15,12 +15,11 @@ export default function Container() {
   const [index, setIndex] = useState(0);
 
   const handleChange = (i) => {
-    console.log(i);
     setIndex(i);
   };
 
   return (
-    <div className="container">
+    <div className="container space-y-6">
       <Tabs
         handleChange={handleChange}
         index={index}

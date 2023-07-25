@@ -2,7 +2,7 @@ import Artices from "./Artices";
 
 const getHeadlines = async () => {
   const res = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.API_KEY}`,
+    `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.NEXT_PUBLIC_API_KEY}`,
     { next: { revalidate: 60 } }
   );
 
