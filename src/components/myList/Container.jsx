@@ -3,11 +3,14 @@
 import { useState } from "react";
 import Content from "./Content";
 import Tabs from "./Tabs";
-import useStorage from "../../../../utils/useStorage";
+import useStorage from "../../../utils/useStorage";
 
 export default function Container() {
   const [tabs, setTabs] = useStorage("TABS");
-  console.log(tabs)
+
+  const addTabs = (title) => {
+    setTabs([...tabs, title]);
+  };
 
   const [index, setIndex] = useState(0);
 
@@ -18,8 +21,13 @@ export default function Container() {
 
   return (
     <div className="container">
-      <Tabs handleChange={handleChange} index={index} tabs={tabs} />
-      {/* <Content title={tabs[index]} /> */}
+      <Tabs
+        handleChange={handleChange}
+        index={index}
+        tabs={tabs}
+        addTabs={addTabs}
+      />
+      {tabs?.length ? <Content title={tabs[index]} /> : ""}
     </div>
   );
 }

@@ -1,9 +1,8 @@
-'use client'
+"use client";
 
-import useSWR from 'swr'
+import useSWR from "swr";
 
-
-const getData = async (title) => {
+const fetcher = async (title) => {
   const res = await fetch(
     `https://newsapi.org/v2/everything?q=${title}&apiKey=${process.env.API_KEY}`
     // { next: { revalidate: 0 } }
@@ -16,11 +15,11 @@ const getData = async (title) => {
   return res.json();
 };
 
-export default async function Content({ title }) {
-  console.log(title);
-  if (title) {
-    const data = await getData(title);
-  }
+export default function Content({ title }) {
+  const { data, error } = useSWR("content", () => fetcher(title));
+
+  if (error) return "Error occured";
+  if (!data) return "Loading...";
 
   return (
     <div>

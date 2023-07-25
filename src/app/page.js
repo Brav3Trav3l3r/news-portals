@@ -1,6 +1,6 @@
 // import { motion } from "framer-motion"
-import MyList from "./components/myList/MyList";
-import TopHeadlines from "./components/topHeadlines/TopHeadlines";
+import MyList from "../components/myList/MyList";
+import TopHeadlines from "../components/topHeadlines/TopHeadlines";
 
 export default function Home() {
   return (
