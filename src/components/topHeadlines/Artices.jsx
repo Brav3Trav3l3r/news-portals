@@ -19,10 +19,8 @@ export default function Artices({ data }) {
         </div>
         <div className="space-y-4">
           <div className="space-y-2">
-            <h1 className="text-xs opacity-60 font-semibold">
-              {formattedDate}
-            </h1>
-            <h1 className="font-bold text-lg md:text-2xl">{first.title}</h1>
+            <h1 className="text-xs opacity-60 ">{formattedDate}</h1>
+            <h1 className="font-medium text-lg md:text-2xl">{first.title}</h1>
           </div>
           <h1 className="opacity-90 md:text-md tracking-wider">
             {first.description}

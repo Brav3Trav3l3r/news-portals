@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Content from "./Content";
 import Tabs from "./Tabs";
 import useStorage from "../../../utils/useStorage";
@@ -10,6 +10,11 @@ export default function Container() {
 
   const addTabs = (title) => {
     setTabs([...tabs, title]);
+  };
+
+  const deleteTab = (title) => {
+    const newTab = tabs.filter((t) => t !== title);
+    setTabs(newTab);
   };
 
   const [index, setIndex] = useState(0);
@@ -25,8 +30,19 @@ export default function Container() {
         index={index}
         tabs={tabs}
         addTabs={addTabs}
+        deleteTab={deleteTab}
       />
-      {tabs?.length ? <Content title={tabs[index]} /> : ""}
+      {tabs?.length ? (
+        <Suspense fallback={<Loading />}>
+          <Content title={tabs[index]} />
+        </Suspense>
+      ) : (
+        ""
+      )}
     </div>
   );
+}
+
+function Loading() {
+  return <div className="h-96 w-full bg-red-500"></div>;
 }

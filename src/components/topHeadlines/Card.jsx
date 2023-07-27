@@ -9,10 +9,8 @@ export default function Card({ article }) {
     <a href={article.url} target="_blank">
       <div className="flex lg:flex-row-reverse gap-4 py-8 lg:first:pt-0 first:border-t-2 border-neutral lg:first:border-none">
         <div className="w-3/5 space-y-3">
-          <h1 className="text-xs opacity-60 font-semibold">{formattedDate}</h1>
-          <h1 className="text-lg font-semibold line-clamp-4">
-            {article.title}
-          </h1>
+          <h1 className="text-xs opacity-60">{formattedDate}</h1>
+          <h1 className="text-lg font-medium line-clamp-4">{article.title}</h1>
           <h1 className="text-xs opacity-75">- {article.source?.name}</h1>
         </div>
         <div className="w-2/5 aspect-video overflow-hidden">
