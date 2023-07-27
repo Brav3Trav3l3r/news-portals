@@ -5,9 +5,8 @@ import ListCard from "./ListCard";
 import { useEffect, useState } from "react";
 
 const fetcher = async (title, page) => {
-  console.log(title);
   const res = await fetch(
-    `https://newsapi.org/v2/everything?q=${title}&pageSize=2&page=${page}&apiKey=${process.env.NEXT_PUBLIC_API_KEY}`
+    `https://newsapi.org/v2/everything?q=${title}&pageSize=8&page=${page}&apiKey=${process.env.NEXT_PUBLIC_API_KEY}`
     // { next: { revalidate: 60 } }
   );
 
@@ -19,23 +18,25 @@ const fetcher = async (title, page) => {
 };
 
 export default function Content({ title }) {
-  const [page, setPage] = useState(1);
-  const [res, setRes] = useState([]);
-
-  useEffect(() => {
-    setPage(1);
-  }, [title]);
-
   const { data, error } = useSWR(title, () => fetcher(title, page));
+
+  const [page, setPage] = useState(1);
+  const [res, setRes] = useState(null);
+
+  const handleAdd = async () => {
+    const data = await fetcher(title, page + 1);
+    setRes([...res, ...data.articles]);
+    setPage((page) => (page += 1));
+  };
 
   useEffect(() => {
     if (data) {
-      setRes([...res, ...data.articles]);
+      setRes(data.articles);
     }
   }, [data]);
 
   useEffect(() => {
-    setRes([]);
+    setPage(1);
   }, [title]);
 
   console.log(res);
@@ -53,7 +54,9 @@ export default function Content({ title }) {
             ))}
           </div>
           <div
-            onClick={() => setPage((page) => (page += 1))}
+            onClick={() => {
+              handleAdd(title, page, res);
+            }}
             className="btn btn-primary w-40 mx-auto"
           >
             Load more {page}

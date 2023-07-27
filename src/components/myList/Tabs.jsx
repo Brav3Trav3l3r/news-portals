@@ -36,7 +36,6 @@ export default function Tabs({
           </button>
         </div>
       ) : (
-        // <button className="btn">+</button>
         <button onClick={() => window.my_modal_2.showModal()} className="btn">
           Fill list +
         </button>

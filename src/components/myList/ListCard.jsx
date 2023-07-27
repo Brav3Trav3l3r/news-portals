@@ -8,7 +8,10 @@ export default function ListCard({ article }) {
       <div className="space-y-3">
         <div className="image aspect-video w-full">
           <img
-            src={article?.urlToImage}
+            src={
+              article?.urlToImage ??
+              "https://cdn5.vectorstock.com/i/1000x1000/91/64/newspaper-icon-on-black-background-black-flat-vector-26849164.jpg"
+            }
             alt=""
             className="w-full h-full object-cover"
           />
